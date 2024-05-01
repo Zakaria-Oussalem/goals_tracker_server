@@ -17,20 +17,20 @@ class Activity(models.Model):
         return self.name
 
 
-class Rule(models.BaseModel):
+class Rule(models.Model):
     name = models.ForeignKey(Activity, on_delete=models.CASCADE)
     reward = models.FloatField()
     punishment = models.FloatField()
     insertion_timestamp = models.DateTimeField(auto_now_add=True)
 
 
-class Logs(models.BaseModel):
+class Log(models.Model):
     activity = models.ForeignKey(Rule, on_delete=models.CASCADE)
     timestamp = models.DateField()
     insertion_timestamp = models.DateTimeField(auto_now_add=True)
 
 
-class BaseValues(models.BaseModel):
+class BaseValue(models.Model):
     day_type = models.CharField(
         max_length=100, choices=DAY_TYPE_CHOICES, default="weekday"
     )
