@@ -5,13 +5,9 @@ from .serializers import LogSerializer
 
 
 @api_view(["GET"])
-def get_rules(request):
-    rules = Rule.objects.all()
-    rules_dict = {
-        rule.name.name: {"reward": rule.reward, "punishment": rule.punishment}
-        for rule in rules
-    }
-    return Response({"rules": rules_dict})
+def rule_count(request):
+    rule_count = Rule.objects.count()
+    return Response({"rule_count": rule_count})
 
 
 @api_view(["GET"])
